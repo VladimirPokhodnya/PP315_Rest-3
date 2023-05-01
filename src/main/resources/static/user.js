@@ -4,12 +4,12 @@ function userAuthInfo() {
     fetch('http://localhost:8080/user/api')
         .then((res) => res.json())
         .then((userInfo) => {
-            let temp = '';
+            let table_row = '';
             let roles = [];
             for (let role of userInfo.roles) {
                 roles.push(" " + role.name.toString().substring(5))
             }
-            temp += `<tr>
+            table_row += `<tr>
                         <td>${userInfo.id}</div>
                         <td>${userInfo.firstname}</td>
                         <td>${userInfo.lastname}</td>
@@ -17,7 +17,7 @@ function userAuthInfo() {
                         <td>${userInfo.username}</td>
                         <td>${userInfo.role}</td>
                     </tr>`;
-tbody.innerHTML = temp;
+            tbody.innerHTML = table_row;
             panel.innerHTML = `<h5><b>${userInfo.username}</b> with roles: <span>${userInfo.role}</span></h5>`
         });
 }

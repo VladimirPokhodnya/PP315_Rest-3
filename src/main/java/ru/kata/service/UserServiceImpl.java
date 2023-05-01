@@ -14,6 +14,7 @@ import ru.kata.repository.RoleJpaRepository;
 import ru.kata.repository.UserJpaRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -97,6 +98,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public User get(Long id) {
         return userJpaRepository.findById(id).get();
+    }
+
+    @Override
+    public User findOne(Long id) {
+        Optional<User> foundUser = userJpaRepository.findById(id);
+        return foundUser.orElse(null);
     }
 
 

@@ -19,9 +19,9 @@
     <br/><br/>
 
     <div sec:authorize="hasAnyAuthority('ADMIN', 'USER')">
-        <span sec:authorize="hasAuthority('ADMIN')" ><a th:href="@{'/admin/'}">Admin</a>
+        <span sec:authorize="hasAuthority('ADMIN')" ><a th:href="@{'/admin'}">Admin</a>
         &nbsp;&nbsp;&nbsp;&nbsp; </span>
-        <a th:href="@{'/user/'}">User</a>
+        <a th:href="@{'/user'}">User</a>
 
     </div>
 

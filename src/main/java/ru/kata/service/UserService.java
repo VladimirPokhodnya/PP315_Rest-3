@@ -28,5 +28,7 @@ public interface UserService extends UserDetailsService {
 
     List<Role> getAllRoles();
 
+    User findOne(Long id);
+
 
 }
