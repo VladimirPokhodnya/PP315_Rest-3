@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.kata.model.User;
 import ru.kata.service.UserService;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/user")
 public class UserRestController {

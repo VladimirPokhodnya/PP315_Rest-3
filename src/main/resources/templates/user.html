@@ -10,9 +10,9 @@
 <body>
 <nav class="navbar navbar-dark bg-dark text-white">
     <div class="container-fluid">
-        <div class="navbar-header">
+        <div class="navbar-header" id="user-header">
 <!--            <b th:text="${user.username}"/> with roles: <span th:text="${user.role}"/>-->
-            <h5><b th:text="${user.username}"/> with roles: <span th:text="${user.role}"/></h5>
+<!--            <h5><b th:text="${user.username}"/> with roles: <span th:text="${user.role}"/></h5>-->
         </div>
         <div class="nav navbar-nav navbar-right">
             <a class="nav-link" href="/logout">Logout</a>
@@ -58,15 +58,15 @@
                                     <th>Role</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr th:each="us : ${user}">
-                                    <td th:text="${us.id}"/>
-                                    <td th:text="${us.firstname}"/>
-                                    <td th:text="${us.lastname}"/>
-                                    <td th:text="${us.age}"/>
-                                    <td th:text="${us.username}"/>
-                                    <td th:text="${us.role}"/>
-                                </tr>
+                                <tbody id="user-table">
+<!--                                <tr th:each="us : ${user}">-->
+<!--                                    <td th:text="${us.id}"/>-->
+<!--                                    <td th:text="${us.firstname}"/>-->
+<!--                                    <td th:text="${us.lastname}"/>-->
+<!--                                    <td th:text="${us.age}"/>-->
+<!--                                    <td th:text="${us.username}"/>-->
+<!--                                    <td th:text="${us.role}"/>-->
+<!--                                </tr>-->
                                 </tbody>
                             </table>
                         </div>
@@ -76,6 +76,6 @@
         </div>
     </div>
 </div>
-
+<script src="/user.js"></script>
 </body>
 </html>
