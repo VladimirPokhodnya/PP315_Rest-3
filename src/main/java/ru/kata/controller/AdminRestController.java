@@ -23,16 +23,11 @@ public class AdminRestController {
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
+
     @GetMapping("/api/users/{id}")
-    public User show(@PathVariable("id") Long id) {
-        return userService.findOne(id);
+    public ResponseEntity<User> apiGetUserById(@PathVariable("id") Long id) {
+        User user = userService.findOne(id);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
-
-//    @DeleteMapping("/api/users/{id}")
-//    public ResponseEntity<HttpStatus> remove(@PathVariable("id") Long id) {
-//        userService.delete(id);
-//        return ResponseEntity.ok(HttpStatus.OK);
-//    }
-
 
 }

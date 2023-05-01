@@ -48,3 +48,8 @@ function usersAll() {
         });
 }
 usersAll()
+
+function userForms () {
+//  заполняем сразу две формы?
+
+}
