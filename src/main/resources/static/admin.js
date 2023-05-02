@@ -49,7 +49,31 @@ function usersAll() {
 }
 usersAll()
 
-function userForms () {
-//  заполняем сразу две формы?
-
+function getRolesForNewUser() {
+    const selectRolesForNewUser = document.getElementById('selectRolesForNewUser')
+    fetch('http://localhost:8080/admin/api/roles')
+        .then(response => response.json())
+        .then(data => {
+            let resRoles = ''
+            data.forEach(element => {
+                if (element.id === 2) {
+                    resRoles +=
+                        `
+                    <option value='${element.id}' selected>
+                    ${element.name}
+                    </option>
+                    `
+                } else {
+                    resRoles +=
+                        `
+                    <option value='${element.id}' >
+                    ${element.name}
+                    </option>
+                    `
+                }
+            })
+            selectRolesForNewUser.innerHTML = resRoles
+        });
 }
+
+getRolesForNewUser()

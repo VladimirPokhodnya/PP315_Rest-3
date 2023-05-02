@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.kata.model.Role;
 import ru.kata.model.User;
+import ru.kata.service.RoleService;
 import ru.kata.service.UserService;
 
 import java.util.List;
@@ -13,10 +15,12 @@ import java.util.List;
 @RequestMapping("/admin/api")
 public class AdminRestController {
     private final UserService userService;
+    private final RoleService roleService;
 
     @Autowired
-    public AdminRestController(UserService userService) {
+    public AdminRestController(UserService userService, RoleService roleService) {
         this.userService = userService;
+        this.roleService = roleService;
     }
 
     @GetMapping("/users")
@@ -29,7 +33,7 @@ public class AdminRestController {
         return new ResponseEntity<>(userService.findOne(id), HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping("/users")
     public ResponseEntity<Void> apiCreateUser(@RequestBody User user) {
         userService.saveUser(user);
         return new ResponseEntity<>(HttpStatus.OK);
@@ -47,4 +51,8 @@ public class AdminRestController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping("/roles")
+    public ResponseEntity<List<Role>> getRoles() {
+        return  ResponseEntity.ok().body(roleService.listAll());
+    }
 }

@@ -114,11 +114,8 @@
                                                     </div>
                                                     <label class="font-weight-bold">Role</label>
                                                     <div>
-                                                        <select class="form-control" name="roles" size="2" multiple>
-                                                            <option th:each="role: ${allRoles}"
-                                                                    th:value="${role.id}"
-                                                                    th:text="${role.name}" name="roles">
-                                                            </option>
+                                                        <select class="form-control" name="roles" size="2" multiple
+                                                                id="selectRolesForNewUser">
                                                         </select>
                                                     </div>
                                                     <button type="submit" class="btn btn-success">Add new user</button>
