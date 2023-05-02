@@ -19,15 +19,12 @@ public class AdminRestController {
 
     @GetMapping("/api/users")
     public ResponseEntity<List<User>> apiGetAllUsers() {
-        List<User> users = userService.getAllUsers();
-        return new ResponseEntity<>(users, HttpStatus.OK);
+        return  new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
-
 
     @GetMapping("/api/users/{id}")
     public ResponseEntity<User> apiGetUserById(@PathVariable("id") Long id) {
-        User user = userService.findOne(id);
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        return new ResponseEntity<>(userService.findOne(id), HttpStatus.OK);
     }
 
 }

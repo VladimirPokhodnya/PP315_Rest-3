@@ -20,7 +20,6 @@ public class UserRestController {
 
     @GetMapping("/api")
     public ResponseEntity<User> apiGetAuthUsers() {
-        User user = userService.getAuthUser();
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        return new ResponseEntity<>(userService.getAuthUser(), HttpStatus.OK);
     }
 }
