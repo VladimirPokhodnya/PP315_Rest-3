@@ -10,7 +10,6 @@ function userAuthInfo() {
             panel.innerHTML = `<h5><b>${userInfo.username}</b> with roles: <span>${userInfo.role}</span></h5>`
         });
 }
-
 userAuthInfo()
 
 function usersAll() {
@@ -32,13 +31,13 @@ function usersAll() {
                         <td>${us.username}</td>
                         <td>${us.role}</td>
                         <td>
-                            <button href="#modalEdit${us.id}" type="button"
+                            <button href="#modalEdit" type="button"
                                     class="btn btn-info" data-toggle="modal">Edit
                             </button>
                         </td>
 
                         <td>
-                            <button href="#modalDelete${us.id}" type="button"
+                            <button href="#modalDelete" type="button"
                                     class="btn btn-danger" data-toggle="modal">Delete
                             </button>
                         </td>
@@ -64,8 +63,7 @@ function getRolesForNewUser() {
                     </option>
                     `
                 } else {
-                    resRoles +=
-                        `
+                    resRoles += `
                     <option value='${element.id}' >
                     ${element.name}
                     </option>
@@ -76,4 +74,4 @@ function getRolesForNewUser() {
         });
 }
 
-getRolesForNewUser()
+// getRolesForNewUser()

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="ISO-8859-1">
     <title>Admin panel</title>
@@ -77,7 +77,7 @@
                                         <h5 class="card-header">Add new user</h5>
                                         <div class="card-body text-center">
                                             <div class="form justify-content-center mx-auto col-5">
-                                                <form th:method="POST" th:action="@{create/}">
+                                                <form>
                                                     <div class="form-group">
                                                         <label for="firstname" class="font-weight-bold">First
                                                             name</label>
@@ -112,12 +112,16 @@
                                                                name="password">
                                                         <br/>
                                                     </div>
-                                                    <label class="font-weight-bold">Role</label>
+
                                                     <div>
+                                                        <label class="font-weight-bold">Role</label>
                                                         <select class="form-control" name="roles" size="2" multiple
                                                                 id="selectRolesForNewUser">
+                                                            <option value="1">ADMIN</option>
+                                                            <option value="2">USER</option>
                                                         </select>
                                                     </div>
+                                                    </br>
                                                     <button type="submit" class="btn btn-success">Add new user</button>
                                                 </form>
                                             </div>
@@ -133,10 +137,10 @@
     </div>
 </div>
 
-<div th:each="usEdit:${listUsers}">
-    <div class="modal" th:id="${'modalEdit' + usEdit.id}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+<div>
+    <div class="modal" th:id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
          aria-hidden="true">
-        <form th:method="patch" th:action="@{edit/{id}(id =${(usEdit.id)})}" th:object="${usEdit}">
+        <form >
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -149,30 +153,28 @@
 
                         <div class="form-group">
                             <label for="id" class="font-weight-bold">ID</label>
-                            <input type="text" class="form-control" id="id" th:value="${usEdit.id}" readonly="readonly">
+                            <input type="text" class="form-control" id="id"
+                                   readonly="readonly">
                         </div>
 
                         <div class="form-group">
                             <label for="firstname" class="font-weight-bold">First name</label>
-                            <input type="text" class="form-control" th:id="firstname" name="firstname"
-                                   th:value="${usEdit.firstname}">
+                            <input type="text" class="form-control" th:id="firstname" name="firstname"/>
                         </div>
 
                         <div class="form-group">
                             <label for="lastname" class="font-weight-bold">Last name</label>
-                            <input type="text" class="form-control" th:id="lastname" name="lastname"
-                                   th:value="${usEdit.lastname}">
+                            <input type="text" class="form-control" th:id="lastname" name="lastname"/>
                         </div>
 
                         <div class="form-group">
                             <label for="age" class="font-weight-bold">Age</label>
-                            <input type="number" class="form-control" th:id="age" name="age" th:value="${usEdit.age}">
+                            <input type="number" class="form-control" th:id="age" name="age"/>
                         </div>
 
                         <div class="form-group">
                             <label for="email" class="font-weight-bold">Email</label>
-                            <input type="email" class="form-control" th:id="email" name="username"
-                                   th:value="${usEdit.username}">
+                            <input type="email" class="form-control" th:id="email" name="username"/>
                         </div>
 
                         <div class="form-group">
@@ -201,10 +203,10 @@
     </div>
 </div>
 
-<div th:each="usDelete:${listUsers}">
-    <div class="modal" th:id="${'modalDelete' + usDelete.id}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+<div>
+    <div class="modal" th:id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
          aria-hidden="true">
-        <form th:method="DELETE" th:action="@{delete/{id}(id =${(usDelete.id)})}">
+        <form>
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -217,42 +219,38 @@
 
                         <div class="form-group">
                             <label for="idDelete" class="font-weight-bold">ID</label>
-                            <input type="text" class="form-control" id="idDelete" th:value="${usDelete.id}"
+                            <input type="text" class="form-control" id="idDelete"
                                    readonly="readonly">
                         </div>
 
                         <div class="form-group">
                             <label for="firstnameDelete" class="font-weight-bold">First name</label>
                             <input type="text" class="form-control" id="firstnameDelete"
-                                   th:value="${usDelete.firstname}"
                                    readonly="readonly">
                         </div>
 
                         <div class="form-group">
                             <label for="lastnameDelete" class="font-weight-bold">Last name</label>
-                            <input type="text" class="form-control" id="lastnameDelete" th:value="${usDelete.lastname}"
+                            <input type="text" class="form-control" id="lastnameDelete"
                                    readonly="readonly">
                         </div>
 
                         <div class="form-group">
                             <label for="ageDelete" class="font-weight-bold">Age</label>
-                            <input type="number" class="form-control" id="ageDelete" th:value="${usDelete.age}"
+                            <input type="number" class="form-control" id="ageDelete"
                                    readonly="readonly">
                         </div>
 
                         <div class="form-group">
                             <label for="emailDelete" class="font-weight-bold">Email</label>
-                            <input type="text" class="form-control" id="emailDelete" th:value="${usDelete.username}"
+                            <input type="text" class="form-control" id="emailDelete"
                                    readonly="readonly">
                         </div>
 
                         <label class="font-weight-bold">Role</label>
                         <div>
                             <select class="form-control" name="roles" multiple required size="2" disabled>
-                                <option th:each="role: ${usDelete.roles}"
-                                        th:value="${role.id}"
-                                        th:text="${role.name}" name="roles">
-                                </option>
+
                             </select>
                         </div>
 
