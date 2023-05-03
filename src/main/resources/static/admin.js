@@ -12,7 +12,7 @@ function userAuthInfo() {
 }
 userAuthInfo()
 
-function usersAll() {
+async function usersAll() {
     const tbody = document.getElementById("users-table")
     fetch("http://localhost:8080/admin/api/users")
         .then((res) => res.json())
@@ -38,7 +38,7 @@ function usersAll() {
 
                         <td>
                             <button href="#modalDelete" type="button"
-                                    class="btn btn-danger" data-toggle="modal">Delete
+                                    class="btn btn-danger" data-toggle="modal" onclick="deleteModal(${us.id})">Delete
                             </button>
                         </td>
                     </tr>`;
@@ -48,30 +48,32 @@ function usersAll() {
 }
 usersAll()
 
-function getRolesForNewUser() {
-    const selectRolesForNewUser = document.getElementById('selectRolesForNewUser')
-    fetch('http://localhost:8080/admin/api/roles')
-        .then(response => response.json())
-        .then(data => {
-            let resRoles = ''
-            data.forEach(element => {
-                if (element.id === 2) {
-                    resRoles +=
-                        `
-                    <option value='${element.id}' selected>
-                    ${element.name}
-                    </option>
-                    `
-                } else {
-                    resRoles += `
-                    <option value='${element.id}' >
-                    ${element.name}
-                    </option>
-                    `
-                }
-            })
-            selectRolesForNewUser.innerHTML = resRoles
-        });
-}
+// function getRolesForNewUser() {
+//     const selectRolesForNewUser = document.getElementById('selectRolesForNewUser')
+//     fetch('http://localhost:8080/admin/api/roles')
+//         .then(response => response.json())
+//         .then(data => {
+//             let resRoles = ''
+//             data.forEach(element => {
+//                 if (element.id === 2) {
+//                     resRoles +=
+//                         `
+//                     <option value='${element.id}' selected>
+//                     ${element.name}
+//                     </option>
+//                     `
+//                 } else {
+//                     resRoles += `
+//                     <option value='${element.id}' >
+//                     ${element.name}
+//                     </option>
+//                     `
+//                 }
+//             })
+//             selectRolesForNewUser.innerHTML = resRoles
+//         });
+// }
 
 // getRolesForNewUser()
+
+
