@@ -3,9 +3,8 @@ const delete_id = document.getElementById('idDelete');
 const delete_firstname = document.getElementById('firstnameDelete');
 const delete_lastname = document.getElementById('lastnameDelete');
 const delete_age = document.getElementById('ageDelete');
-const delete_email = document.getElementById('delete_email');
-// const delete_username = document.getElementById('delete_username');
-const delete_password = document.getElementById('delete_password');
+const delete_email = document.getElementById('emailDelete');
+// const delete_password = document.getElementById('delete_password');
 // const delete_roles = document.getElementById('rolesForDeleting')
 
 
@@ -17,9 +16,10 @@ async function deleteModal(id) {
             await modalDelete.json().then(user => {
                 delete_id.value = `${user.id}`;
                 delete_firstname.value = `${user.firstname}`;
+                delete_lastname.value = `${user.lastname}`;
                 delete_age.value = `${user.age}`;
                 delete_email.value = `${user.username}`;
-                delete_password.value = `${user.password}`
+                // delete_password.value = `${user.password}`
                 // delete_roles.value = `${user.role}`
             })
     } else {
