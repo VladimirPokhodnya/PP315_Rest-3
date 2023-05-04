@@ -28,5 +28,5 @@ async function editModal(id) {
 }
 
 async function editUser() {
-    alert("Edit User ...")
+    // alert("Edit User ...")
 }
