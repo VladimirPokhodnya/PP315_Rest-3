@@ -35,14 +35,15 @@ async function editUser() {
         }
     }
     let method = {
-        method: 'PATCH',
+        method: 'PUT',
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            username: editForm.username.value,
+            firstname: editForm.firstname.value,
+            lastname: editForm.lastname.value,
             age: editForm.age.value,
-            email: editForm.email.value,
+            username: editForm.username.value,
             password: editForm.password.value,
             roles: roles
         })

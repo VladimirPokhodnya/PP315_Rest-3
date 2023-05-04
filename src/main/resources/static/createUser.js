@@ -20,7 +20,7 @@ async function createNewUser(event) {
             age: form_addUser.age.value,
             username: form_addUser.username.value,
             password: form_addUser.password.value,
-            // roles: role_new
+            roles: role_new.value
         }),
 
     }
