@@ -186,11 +186,9 @@
                         </div>
                         <label class="font-weight-bold">Role</label>
                         <div>
-                            <select class="form-control" name="roles" size="2" multiple>
-                                <!--                                <option th:each="role: ${allRoles}"-->
-                                <!--                                        th:value="${role.id}"-->
-                                <!--                                        th:text="${role.name}" name="roles">-->
-<!--                                </option>-->
+                            <select class="form-control" name="roles" size="2" multiple id="rolesForEditing">
+                                <option id="editAdmin" value="1" name="roles">ADMIN</option>
+                                <option id="editUser" value="2" name="roles">USER</option>
                             </select>
 
                         </div>
@@ -252,14 +250,17 @@
 
                         <label class="font-weight-bold">Role</label>
                         <div>
-                            <select class="form-control" name="roles" multiple required size="2" disabled>
-
+                            <select class="form-control" name="roles" multiple required size="2" disabled
+                                    id="rolesForDeleting">
+                                <option id="deleteAdmin" value="1" name="roles">ADMIN</option>
+                                <option id="deleteUser" value="2" name="roles">USER</option>
                             </select>
                         </div>
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="deleteCloseBtn">Close</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="deleteCloseBtn">Close
+                        </button>
                         <button type="submit" class="btn btn-danger" onclick="deleteUser()">Delete</button>
                     </div>
                 </div>

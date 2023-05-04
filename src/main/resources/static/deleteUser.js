@@ -4,8 +4,7 @@ const delete_firstname = document.getElementById('firstnameDelete');
 const delete_lastname = document.getElementById('lastnameDelete');
 const delete_age = document.getElementById('ageDelete');
 const delete_email = document.getElementById('emailDelete');
-// const delete_password = document.getElementById('delete_password');
-// const delete_roles = document.getElementById('rolesForDeleting')
+const delete_roles = document.getElementById('rolesForDeleting')
 
 
 async function deleteModal(id) {
@@ -19,8 +18,7 @@ async function deleteModal(id) {
                 delete_lastname.value = `${user.lastname}`;
                 delete_age.value = `${user.age}`;
                 delete_email.value = `${user.username}`;
-                // delete_password.value = `${user.password}`
-                // delete_roles.value = `${user.role}`
+                delete_roles.value = `${user.role}`
             })
     } else {
         alert(`Error, ${modalDelete.status}`)

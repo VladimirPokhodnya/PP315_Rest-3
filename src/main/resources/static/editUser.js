@@ -5,7 +5,7 @@ const edit_lastname = document.getElementById('lastnameEdit');
 const edit_age = document.getElementById('ageEdit');
 const edit_email = document.getElementById('emailEdit');
 const edit_password = document.getElementById('passwordEdit');
-// const delete_roles = document.getElementById('rolesForDeleting')
+const edit_roles = document.getElementById('rolesForEditing')
 
 async function editModal(id) {
     const urlEdit = 'http://localhost:8080/admin/api/users/' + id;
@@ -18,9 +18,8 @@ async function editModal(id) {
                 edit_lastname.value = `${user.lastname}`;
                 edit_age.value = `${user.age}`;
                 edit_email.value = `${user.username}`;
-                // edit_password.value = ``;
-                // edit_password.value = `${user.password}`
-                // delete_roles.value = `${user.role}`
+                edit_password.value = ``;
+                edit_roles.value = `${user.role}`
             })
     } else {
         alert(`Error, ${modalEdit.status}`)
@@ -28,5 +27,29 @@ async function editModal(id) {
 }
 
 async function editUser() {
-    // alert("Edit User ...")
+    let urlEdit = 'http://localhost:8080/admin/users/' + edit_id.value;
+    let roles = [];
+    for (let i = 0; i < editForm.roles.options.length; i++) {
+        if (editForm.roles.options[i].selected) {
+            roles.push(editForm.roles.options[i].value);
+        }
+    }
+    let method = {
+        method: 'PATCH',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            username: editForm.username.value,
+            age: editForm.age.value,
+            email: editForm.email.value,
+            password: editForm.password.value,
+            roles: roles
+        })
+    }
+
+    await fetch(urlEdit, method).then(() => {
+        $('#editCloseBtn').click();
+        usersAll();
+    })
 }
