@@ -22,8 +22,6 @@ public interface UserService extends UserDetailsService {
 
     User getById(Long id);
 
-    void updateUser(User user);
-
     User getAuthUser();
 
     List<Role> getAllRoles();

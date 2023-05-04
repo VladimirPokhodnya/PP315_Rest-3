@@ -17,13 +17,11 @@ import java.util.List;
 public class AdminRestController {
     private final UserService userService;
     private final RoleService roleService;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public AdminRestController(UserService userService, RoleService roleService, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public AdminRestController(UserService userService, RoleService roleService) {
         this.userService = userService;
         this.roleService = roleService;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @GetMapping("/users")
@@ -38,8 +36,7 @@ public class AdminRestController {
 
     @PostMapping("/users")
     public ResponseEntity<Void> apiCreateUser(@RequestBody User user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        userService.save(user);
+        userService.saveUser(user);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
