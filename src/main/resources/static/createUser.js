@@ -20,8 +20,8 @@ async function createNewUser(event) {
             age: form_addUser.age.value,
             username: form_addUser.username.value,
             password: form_addUser.password.value,
-
-        }, {roles: roles}),
+            // roles: role_new
+        }),
 
     }
     await fetch(urlNewUser, method).then(() => {

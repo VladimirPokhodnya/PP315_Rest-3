@@ -3,6 +3,7 @@ package ru.kata.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import ru.kata.model.Role;
 import ru.kata.model.User;
@@ -16,11 +17,13 @@ import java.util.List;
 public class AdminRestController {
     private final UserService userService;
     private final RoleService roleService;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public AdminRestController(UserService userService, RoleService roleService) {
+    public AdminRestController(UserService userService, RoleService roleService, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userService = userService;
         this.roleService = roleService;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @GetMapping("/users")
@@ -35,7 +38,8 @@ public class AdminRestController {
 
     @PostMapping("/users")
     public ResponseEntity<Void> apiCreateUser(@RequestBody User user) {
-        userService.saveUser(user);
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        userService.save(user);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
