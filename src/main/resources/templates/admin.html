@@ -143,7 +143,7 @@
 <div>
     <div class="modal" th:id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
          aria-hidden="true">
-        <form>
+        <form id="formEdit">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -155,34 +155,34 @@
                     <div class="modal-body text-center" style="margin-left:100px; margin-right:100px;">
 
                         <div class="form-group">
-                            <label for="id" class="font-weight-bold">ID</label>
-                            <input type="text" class="form-control" id="id"
+                            <label for="idEdit" class="font-weight-bold">ID</label>
+                            <input type="text" class="form-control" id="idEdit"
                                    readonly="readonly">
                         </div>
 
                         <div class="form-group">
-                            <label for="firstname" class="font-weight-bold">First name</label>
-                            <input type="text" class="form-control" th:id="firstname" name="firstname">
+                            <label for="firstnameEdit" class="font-weight-bold">First name</label>
+                            <input type="text" class="form-control" id="firstnameEdit">
                         </div>
 
                         <div class="form-group">
-                            <label for="lastname" class="font-weight-bold">Last name</label>
-                            <input type="text" class="form-control" th:id="lastname" name="lastname">
+                            <label for="lastnameEdit" class="font-weight-bold">Last name</label>
+                            <input type="text" class="form-control" id="lastnameEdit">
                         </div>
 
                         <div class="form-group">
-                            <label for="age" class="font-weight-bold">Age</label>
-                            <input type="number" class="form-control" th:id="age" name="age">
+                            <label for="ageEdit" class="font-weight-bold">Age</label>
+                            <input type="number" class="form-control" id="ageEdit">
                         </div>
 
                         <div class="form-group">
-                            <label for="email" class="font-weight-bold">Email</label>
-                            <input type="email" class="form-control" th:id="email" name="username">
+                            <label for="emailEdit" class="font-weight-bold">Email</label>
+                            <input type="email" class="form-control" id="emailEdit">
                         </div>
 
                         <div class="form-group">
-                            <label for="password" class="font-weight-bold">Password</label>
-                            <input type="password" class="form-control" th:id="password" name="password">
+                            <label for="passwordEdit" class="font-weight-bold">Password</label>
+                            <input type="password" class="form-control" id="passwordEdit">
                         </div>
                         <label class="font-weight-bold">Role</label>
                         <div>
@@ -190,7 +190,7 @@
                                 <!--                                <option th:each="role: ${allRoles}"-->
                                 <!--                                        th:value="${role.id}"-->
                                 <!--                                        th:text="${role.name}" name="roles">-->
-                                </option>
+<!--                                </option>-->
                             </select>
 
                         </div>
@@ -198,7 +198,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Edit</button>
+                        <button type="submit" class="btn btn-primary" onclick="editUser()">Edit</button>
                     </div>
                 </div>
             </div>
@@ -269,6 +269,7 @@
 </div>
 <script src="/admin.js"></script>
 <script src="/createUser.js"></script>
+<script src="/editUser.js"></script>
 <script src="/deleteUser.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

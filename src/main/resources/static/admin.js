@@ -32,7 +32,7 @@ async function usersAll() {
                         <td>${us.role}</td>
                         <td>
                             <button href="#modalEdit" type="button"
-                                    class="btn btn-info" data-toggle="modal">Edit
+                                    class="btn btn-info" data-toggle="modal" onclick="editModal(${us.id})">Edit
                             </button>
                         </td>
 
